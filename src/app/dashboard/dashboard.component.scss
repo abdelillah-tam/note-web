@@ -1,0 +1,11 @@
+div{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    app-left-panel{
+        width: 25%;
+    }
+    app-notes{
+        width: 75%;
+    }
+}

@@ -1,0 +1,36 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="username">Username:</label>
+    <input
+      id="username"
+      placeholder="Enter Username"
+      type="text"
+      formControlName="username"
+    />
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input
+      id="password"
+      type="password"
+      placeholder="Enter Password"
+      formControlName="password"
+    />
+  </div>
+
+  <div>
+    <label for="repass">Rewrite password</label>
+    <input
+      id="repass"
+      type="password"
+      placeholder="Enter password again"
+      formControlName="repass"
+    />
+  </div>
+  <div>
+    <a class="login-a" routerLink="/login" routerLinkActive="active">Login</a>
+  </div>
+  <button [ngClass]="signupForm.valid ? 'activated' : ''" (submit)="onSubmit()">
+    Signup
+  </button>
+</form>

@@ -1,0 +1,27 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="username">Username:</label>
+      <input
+        id="username"
+        placeholder="Enter Username"
+        type="text"
+        formControlName="username"
+      />
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input
+        id="password"
+        type="password"
+        placeholder="Enter Password"
+        formControlName="password"
+      />
+    </div>
+    <div>
+      <a class="signup-a" routerLink="/signup" routerLinkActive="active">Signup</a>
+    </div>
+    <button [ngClass]="loginForm.valid ? 'activated' : ''" (submit)="onSubmit()">
+      Login
+    </button>
+  </form>
+  

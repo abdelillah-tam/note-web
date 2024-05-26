@@ -1,0 +1,49 @@
+$red: #a31f10;
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-evenly;
+  padding-left: 20%;
+  padding-right: 20%;
+  div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10%;
+    margin-top: 1%;
+    label {
+      margin-bottom: 5px;
+    }
+    input {
+      border-radius: 999px;
+      border-color: $red;
+      border-style: solid;
+      border-width: 1px;
+      padding: 10px;
+      outline-width: 0;
+      
+      &:focus{
+        border-width: 2px;
+      }
+    }
+  }
+  button{
+    background-color: white;
+    color: gray;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border: none;
+    border-radius: 999px;
+    box-shadow: 5px 5px 10px lightgray;
+  }
+
+  .signup-a{
+    color: lightcoral;
+  }
+
+  .activated{
+    color: black;
+    cursor: pointer;
+  }
+}
