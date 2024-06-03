@@ -18,12 +18,14 @@ main{
   box-shadow: 10px 10px 50px lightgray;
   align-items: center;
   div {
-    width: 50%;
+    width: 50vw;
+    height: 100%;
     .poster-image {
       width: 100%;
+      height: 100%;
     }
   }
   app-form{
-    width: 50%;
+    width: 50vw;
   }
 }

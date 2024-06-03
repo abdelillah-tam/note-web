@@ -1,0 +1,9 @@
+<form [formGroup]="settingsForm" (submit)="update()">
+  <label>Email:</label>
+  <input formControlName="email" placeholder="Email"/>
+
+  <label>Password:</label>
+  <input formControlName="password" type="password"/>
+  
+  <button (submit)="update()">Save</button>
+</form>

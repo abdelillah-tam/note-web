@@ -1,13 +1,28 @@
 $red: #a31f10;
 
 nav {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   background-color: $red;
   padding-top: 16px;
+  .logout-div{
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    cursor: pointer;
+    h6 {
+      width: 100%;
+      padding-left: 8px;
+      color: white;
+      font-size: 16px;
+    }
+  }
 }
 
 .list-panel {
+  height: 90%;
   li {
     display: flex;
     align-items: center;

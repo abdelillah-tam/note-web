@@ -1,6 +1,6 @@
 <ul class="list-notes">
   <li class="item-create">
-    <button>
+    <button (click)="add()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -21,16 +21,10 @@
       <h6>Create note</h6>
     </button>
   </li>
-  <li class="item-note"><div>Item 1</div></li>
-  <li class="item-note"><div>Item 2</div></li>
-  <li class="item-note"><div>Item 3</div></li>
-  <li class="item-note"><div>Item 4</div></li>
-  <li class="item-note"><div>Item 5</div></li>
-  <li class="item-note"><div>Item 6</div></li>
-  <li class="item-note"><div>Item 7</div></li>
-  <li class="item-note"><div>Item 8</div></li>
-  <li class="item-note"><div>Item 9</div></li>
-  <li class="item-note"><div>Item 10</div></li>
-  <li class="item-note"><div>Item 11</div></li>
+  <li class="item-note" *ngFor="let item of notes">
+    <div><p class="item-date">{{ item.date | date }}</p></div>
+    <div><p class="item-title">{{ item.noteTitle }}</p></div>
+    <div><p class="item-content">{{ item.note }}</p></div>
+  </li>
   
 </ul>

@@ -1,0 +1,6 @@
+<form [formGroup]="noteForm" (ngSubmit)="addNote()">
+  <input id="note-title" formControlName="noteTitle" placeholder="Note title"/>
+  <textarea class="note-input" id="note" formControlName="note" placeholder="Note ..."></textarea>
+
+  <button (submit)="addNote()">Add</button>
+</form>

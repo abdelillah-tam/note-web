@@ -4,6 +4,7 @@ $red: #a31f10;
   display: flex;
   flex-wrap: wrap;
   height: 100%;
+  align-content: start;
   overflow-y: scroll;
   list-style: none;
   .item-create {
@@ -30,5 +31,27 @@ $red: #a31f10;
   .item-note {
     width: 20%;
     height: 20%;
+    padding: 12px;
+    overflow: hidden;
+    .item-date{
+      font-size: 12px;
+    }
+    .item-title{
+      display: -webkit-box;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      font-size: 19px;
+      margin-top: 8px;
+    }
+    .item-content{
+      margin-top: 8px;
+      display: -webkit-box;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
   }
 }

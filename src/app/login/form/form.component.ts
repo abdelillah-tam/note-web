@@ -1,7 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { AuthService } from '../../services/auth-service/auth.service';
+import { MatDialog, MatDialogModule } from "@angular/material/dialog";
+import { SignupComponent } from '../../signup/signup.component';
 
 @Component({
   selector: 'app-form',
@@ -12,14 +15,30 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 })
 export class FormComponent {
 
+  constructor(private router: Router,private authService: AuthService, private dialog: MatDialog) { }
+
+
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
   });
 
-  @Output() info : EventEmitter<FormGroup> = new EventEmitter();
+  @Output() info: EventEmitter<FormGroup> = new EventEmitter();
+
+
 
   onSubmit() {
-    this.info.emit(this.loginForm);
+    this.authService.login(
+      this.loginForm.value.username!.toString(),
+      this.loginForm.value.password!.toString(),
+    (objectId, email, userToken) => {
+      localStorage.setItem('objectId', objectId);
+      localStorage.setItem('email', email);
+      localStorage.setItem('user-token', userToken);
+
+      this.router.navigate(['/dashboard']);
+
+    });
+
   }
 }

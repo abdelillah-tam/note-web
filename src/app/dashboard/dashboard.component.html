@@ -1,4 +1,5 @@
 <div>
-  <app-left-panel></app-left-panel>
-  <app-notes></app-notes>
+  <app-left-panel (selectedZero)="changePanel($event)"></app-left-panel>
+  <app-notes *ngIf="changeToSettings === false"></app-notes>
+  <app-settings *ngIf="changeToSettings === true"></app-settings>
 </div>
