@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NotesComponent } from './notes/notes.component';
 import { LeftPanelComponent } from './left-panel/left-panel.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -13,24 +13,27 @@ import { Router } from '@angular/router';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router){
+    
+
+    
+  }
+  ngOnInit(): void {
     let userToken = localStorage.getItem('user-token');
     let objectId = localStorage.getItem('objectId');
     let email = localStorage.getItem('email');
 
     if(userToken === null || objectId === null || email === null){
-      router.navigate(['/login']);
+      this.router.navigate(['/login']);
     }else{
-      authService.checkIfTokenValid(userToken, (valid) =>{
+      this.authService.checkIfTokenValid(userToken, (valid) =>{
         if(!valid){
-          router.navigate(['/login']);
+          this.router.navigate(['/login']);
         }
       })
     }
-
-    
   }
 
   changeToSettings = false;
