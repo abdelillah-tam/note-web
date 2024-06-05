@@ -18,7 +18,7 @@ export class NoteService {
         'user-token': userToken
       })
     }).subscribe(result => {
-      console.log(result)
+      console.log(result);
     });
   }
 

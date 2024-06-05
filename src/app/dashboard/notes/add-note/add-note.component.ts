@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Inject, Injector, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NoteService } from '../../../services/note/note.service';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-note',
@@ -11,7 +12,9 @@ import { NoteService } from '../../../services/note/note.service';
 })
 export class AddNoteComponent {
 
-  constructor(private noteService: NoteService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { fu: () => undefined }, private noteService: NoteService) { }
+
+  @Output() added = new EventEmitter();
 
   noteForm = new FormGroup({
     noteTitle: new FormControl('', [Validators.nullValidator]),
@@ -24,7 +27,10 @@ export class AddNoteComponent {
       this.noteForm.value.noteTitle!,
       this.noteForm.value.note!,
       userToken!
-    )
+    );
+    this.noteForm.controls.noteTitle.setValue('');
+    this.noteForm.controls.note.setValue('');
+    this.data.fu();
   }
 
 }

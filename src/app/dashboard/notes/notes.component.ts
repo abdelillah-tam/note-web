@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-notes',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, AddNoteComponent],
   templateUrl: './notes.component.html',
   styleUrl: './notes.component.scss'
 })
@@ -29,8 +29,17 @@ export class NotesComponent implements OnInit {
   add() {
     this.dialog.open(AddNoteComponent, {
       height: '400px',
-      width: '600px'
+      width: '600px',
+      data: {
+        fu : () => {
+          this.dialog.closeAll();
+        }
+      }
     })
+  }
+
+  closeDialog(){
+    this.dialog.closeAll();
   }
 
 }
