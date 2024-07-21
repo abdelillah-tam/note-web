@@ -19,7 +19,7 @@ export class FormComponent {
 
 
   loginForm = new FormGroup({
-    username: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
   });
 
@@ -29,7 +29,7 @@ export class FormComponent {
 
   onSubmit() {
     this.authService.login(
-      this.loginForm.value.username!.toString(),
+      this.loginForm.value.email!.toString(),
       this.loginForm.value.password!.toString(),
     (objectId, email, userToken) => {
       localStorage.setItem('objectId', objectId);

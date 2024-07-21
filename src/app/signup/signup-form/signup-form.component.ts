@@ -18,7 +18,7 @@ export class FormComponent {
   }
 
   signupForm = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     repass: new FormControl('', [Validators.required, Validators.minLength(8)])
   });
@@ -28,11 +28,10 @@ export class FormComponent {
   onSubmit() {
     let result = this.authService
       .signup(
-        this.signupForm.value.username!.toString(),
+        this.signupForm.value.email!.toString(),
         this.signupForm.value.password!.toString()
       );
 
-     
   }
 
 
