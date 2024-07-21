@@ -9,7 +9,7 @@ export class NoteService {
   constructor(private http: HttpClient) { }
 
   postNote(noteTitle: string | number, note: string | number, userToken: string) {
-    this.http.post('https://merrybirth-us.backendless.app/api/data/notes', {
+    this.http.post('https://brainyclub-eu.backendless.app/api/data/notes', {
       noteTitle: noteTitle,
       note: note
     }, {
@@ -27,7 +27,7 @@ export class NoteService {
       noteTitle: string;
       note: string;
       created: number
-    }[]>(`https://merrybirth-us.backendless.app/api/data/notes?where=ownerId%20%3D%20'${ownerId}'`, {
+    }[]>(`https://brainyclub-eu.backendless.app/api/data/notes?where=ownerId%20%3D%20'${ownerId}'`, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     }).subscribe(result => {
       result.forEach(item => {

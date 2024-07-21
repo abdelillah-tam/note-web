@@ -11,7 +11,7 @@ export class AuthService {
 
   signup(email: string, password: string) {
     this.http
-      .post<{ email: string }>('https://merrybirth-us.backendless.app/api/users/register', {
+      .post<{ email: string }>('https://brainyclub-eu.backendless.app/api/users/register', {
         'email': email,
         'password': password
       }, { headers: new HttpHeaders().set('Content-Type', 'application/json') })
@@ -31,19 +31,18 @@ export class AuthService {
         objectId: string;
         email: string;
         'user-token': string
-      }>('https://merrybirth-us.backendless.app/api/users/login', {
+      }>('https://brainyclub-eu.backendless.app/api/users/login', {
         'login': email,
         'password': password
       }, {
         headers: new HttpHeaders().set('Content-Type', 'application/json')
       }).subscribe(response => {
-        console.log(response);
         callWhenLoggedIn(response.objectId, response.email, response['user-token']);
       });
   }
 
   logout(userToken: string, afterLogout: () => undefined) {
-    this.http.get('https://merrybirth-us.backendless.app/api/users/logout', {
+    this.http.get('https://brainyclub-eu.backendless.app/api/users/logout', {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'user-token': userToken
@@ -54,20 +53,19 @@ export class AuthService {
   }
 
   checkIfTokenValid(userToken: string, afterResult: (valid: boolean) => undefined) {
-    this.http.get<boolean>(`https://merrybirth-us.backendless.app/api/users/isvalidusertoken/${userToken}`)
+    this.http.get<boolean>(`https://brainyclub-eu.backendless.app/api/users/isvalidusertoken/${userToken}`)
       .subscribe(result => {
         afterResult(result);
       });
   }
 
   getUserData(fn: (email: string) => any, objectId: string, userToken: string) {
-    this.http.get<{ email: string }>(`https://merrybirth-us.backendless.app/api/data/Users/${objectId}`, {
+    this.http.get<{ email: string }>(`https://brainyclub-eu.backendless.app/api/data/Users/${objectId}`, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'user-token': userToken
       })
     }).subscribe(result => {
-      console.log(result);
       fn(result.email);
     });
   }
@@ -76,7 +74,7 @@ export class AuthService {
 
   updateEmail(email: string, password: string | null, objectId: string, userToken: string) {
     if (password !== null) {
-      this.http.put(`https://merrybirth-us.backendless.app/api/data/Users/${objectId}`, {
+      this.http.put(`https://brainyclub-eu.backendless.app/api/data/Users/${objectId}`, {
         'email': email,
         'password': password!
       },
@@ -86,10 +84,9 @@ export class AuthService {
             'user-token': userToken
           })
         }).subscribe(result => {
-          console.log(result);
         });
     } else {
-      this.http.put('https://merrybirth-us.backendless.app/api/data/Users/22A6D4B8-DA9F-40E3-832A-2EFBE0CB4AC5', {
+      this.http.put('https://brainyclub-eu.backendless.app/api/data/Users/22A6D4B8-DA9F-40E3-832A-2EFBE0CB4AC5', {
         'email': email
       },
         {
