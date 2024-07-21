@@ -5,11 +5,11 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../services/auth-service/auth.service';
 
 @Component({
-  selector: 'app-form',
+  selector: 'app-signup-form',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterLink, RouterOutlet, RouterLinkActive],
-  templateUrl: './form.component.html',
-  styleUrl: './form.component.scss'
+  templateUrl: './signup-form.component.html',
+  styleUrl: './signup-form.component.scss'
 })
 export class FormComponent {
 

@@ -7,11 +7,11 @@ import { MatDialog, MatDialogModule } from "@angular/material/dialog";
 import { SignupComponent } from '../../signup/signup.component';
 
 @Component({
-  selector: 'app-form',
+  selector: 'app-login-form',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterLink, RouterOutlet, RouterLinkActive],
-  templateUrl: './form.component.html',
-  styleUrl: './form.component.scss'
+  templateUrl: './login-form.component.html',
+  styleUrl: './login-form.component.scss'
 })
 export class FormComponent {
 
